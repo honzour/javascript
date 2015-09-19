@@ -20,6 +20,7 @@ var oznaceno = -1;
 var bilePozadi = "#dddddd";
 var cernePozadi = "#777777";
 
+var bily = true;
 var sch = new Array(
  -4, -2, -3, -5, -6, -3, -2, -4,
  -1, -1, -1, -1, -1, -1, -1, -1,
@@ -81,23 +82,42 @@ function clicknul(i, j)
 
   if (oznaceno >= 0)
   {
-    sch[noveOznaceno] = sch[oznaceno];
-    sch[oznaceno] = 0;
-    zobrazPole(oznaceno);
-    zobrazPole(noveOznaceno);
-    oznaceno = -1;
+    // už má označený kámen
+    if (bily && sch[noveOznaceno] > 0 || !bily && sch[noveOznaceno] < 0)
+    {
+      // ale znova ťuknul na svůj kámen - nehrajeme si na "šáhnuto táhnuto"
+      zobrazPole(oznaceno);
+      x[noveOznaceno].style.backgroundColor='#000';
+      oznaceno = noveOznaceno;
+    }
+    else
+    {
+      // táhni
+      sch[noveOznaceno] = sch[oznaceno];
+      sch[oznaceno] = 0;
+      zobrazPole(oznaceno);
+      zobrazPole(noveOznaceno);
+      oznaceno = -1;
+      var tahne = document.getElementById("tahne");
+      bily = !bily;
+      tahne.innerHTML = (bily ? "Na tahu je bílý." : "Na tahu je černý.");
+    }
   }
   else
   {
-    x[noveOznaceno].style.backgroundColor='#000';
-    oznaceno = noveOznaceno;
+    // první půlka tahu - odkud
+    if (bily && sch[noveOznaceno] > 0 || !bily && sch[noveOznaceno] < 0)
+    {
+      x[noveOznaceno].style.backgroundColor='#000';
+      oznaceno = noveOznaceno;
+    }
   }
 }
 
 
 // -->
 </SCRIPT>
-
+<P id = "tahne">Na tahu je bílý.</P>
 <TABLE id="board">
 	<TR width="40">
 		<TD class = "tdb"><A HREF="#" onClick="clicknul(0, 0);"><IMG src="cv.png" name="a8"></A></TD>
