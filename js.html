@@ -16,20 +16,91 @@
 <BODY>
 <SCRIPT type="text/javascript">
 <!--
+
+var a1 = 21;
+var b1 = 22;
+var c1 = 23;
+var d1 = 24;
+var e1 = 25;
+var f1 = 26;
+var g1 = 27;
+var h1 = 28;
+var a2 = 31;
+var b2 = 32;
+var c2 = 33;
+var d2 = 34;
+var e2 = 35;
+var f2 = 36;
+var g2 = 37;
+var h2 = 38;
+var a3 = 41;
+var b3 = 42;
+var c3 = 43;
+var d3 = 44;
+var e3 = 45;
+var f3 = 46;
+var g3 = 47;
+var h3 = 48;
+var a4 = 51;
+var b4 = 52;
+var c4 = 53;
+var d4 = 54;
+var e4 = 55;
+var f4 = 56;
+var g4 = 57;
+var h4 = 58;
+var a5 = 61;
+var b5 = 62;
+var c5 = 63;
+var d5 = 64;
+var e5 = 65;
+var f5 = 66;
+var g5 = 67;
+var h5 = 68;
+var a6 = 71;
+var b6 = 72;
+var c6 = 73;
+var d6 = 74;
+var e6 = 75;
+var f6 = 76;
+var g6 = 77;
+var h6 = 78;
+var a7 = 81;
+var b7 = 82;
+var c7 = 83;
+var d7 = 84;
+var e7 = 85;
+var f7 = 86;
+var g7 = 87;
+var h7 = 88;
+var a8 = 91;
+var b8 = 92;
+var c8 = 93;
+var d8 = 94;
+var e8 = 95;
+var f8 = 96;
+var g8 = 97;
+var h8 = 98;
+
 var oznaceno = -1;
 var bilePozadi = "#dddddd";
 var cernePozadi = "#777777";
 
 var bily = true;
 var sch = new Array(
- -4, -2, -3, -5, -6, -3, -2, -4,
- -1, -1, -1, -1, -1, -1, -1, -1,
- 0, 0, 0, 0, 0, 0, 0, 0,
- 0, 0, 0, 0, 0, 0, 0, 0,
- 0, 0, 0, 0, 0, 0, 0, 0,
- 0, 0, 0, 0, 0, 0, 0, 0,
- 1, 1, 1, 1, 1, 1, 1, 1,
- 4, 2, 3, 5, 6, 3, 2, 4 );
+	100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+// a b c d e f g h
+100, 4, 2, 3, 5, 6, 3, 2, 4, 100, // 1
+100, 1, 1, 1, 1, 1, 1, 1, 1, 100, // 2
+100, 0, 0, 0, 0, 0, 0, 0, 0, 100, // 3
+100, 0, 0, 0, 0, 0, 0, 0, 0, 100, // 4
+100, 0, 0, 0, 0, 0, 0, 0, 0, 100, // 5
+100, 0, 0, 0, 0, 0, 0, 0, 0, 100, // 6
+100, -1, -1, -1, -1, -1, -1, -1, -1, 100, // 7
+100, -4, -2, -3, -5, -6, -3, -2, -4, 100, // 8
+100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
+100, 100, 100, 100, 100, 100, 100, 100, 100, 100);
 
 function fgr(i)
 {
@@ -67,7 +138,9 @@ function fgr(i)
 function zobrazPole(i)
 {
   var img = document.getElementById("board").getElementsByTagName("img")[i];
-  img.src = fgr(sch[i]);
+  y = i / 8;
+  x = i % 8; 
+  img.src = fgr(sch[a1 + x + (8 - y) * 10]);
 }
 
 
@@ -76,9 +149,9 @@ function clicknul(i, j)
   var x = document.getElementById("board").getElementsByTagName("td");
   if (oznaceno >= 0)
   {
-    x[oznaceno].style.backgroundColor = ((oznaceno + oznaceno / 8) & 1 ? cernePozadi : bilePozadi);
+    x[oznaceno].style.backgroundColor = ((oznaceno + oznaceno / 10) & 1 ? cernePozadi : bilePozadi);
   }
-  var noveOznaceno = i + 8 * j;
+  var noveOznaceno = a1 + i + 10 * (8 - j);
 
   if (oznaceno >= 0)
   {
