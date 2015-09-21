@@ -151,7 +151,7 @@ function clicknul(i, j)
   {
     x[oznaceno].style.backgroundColor = ((oznaceno + oznaceno / 10) & 1 ? cernePozadi : bilePozadi);
   }
-  var noveOznaceno = a1 + i + 10 * (8 - j);
+  var noveOznaceno = a8 + i - 10 * j;
 
   if (oznaceno >= 0)
   {
@@ -181,7 +181,7 @@ function clicknul(i, j)
     // první půlka tahu - odkud
     if (bily && sch[noveOznaceno] > 0 || !bily && sch[noveOznaceno] < 0)
     {
-      x[noveOznaceno].style.backgroundColor='#000';
+      x[i + j * 8].style.backgroundColor='#000';
       oznaceno = noveOznaceno;
     }
   }
