@@ -135,12 +135,17 @@ function fgr(i)
   }
 }
 
+function sch2board(i)
+{
+  var y = 7 - (i - a1) / 10;
+  var x = (i - a1) % 10;
+  return x + y * 8;
+}
+
 function zobrazPole(i)
 {
-  var img = document.getElementById("board").getElementsByTagName("img")[i];
-  y = i / 8;
-  x = i % 8; 
-  img.src = fgr(sch[a1 + x + (8 - y) * 10]);
+  var img = document.getElementById("board").getElementsByTagName("img")[sch2board(i)];
+  img.src = fgr(sch[i]);
 }
 
 
@@ -149,7 +154,7 @@ function clicknul(i, j)
   var x = document.getElementById("board").getElementsByTagName("td");
   if (oznaceno >= 0)
   {
-    x[oznaceno].style.backgroundColor = ((oznaceno + oznaceno / 10) & 1 ? cernePozadi : bilePozadi);
+    x[sch2board(oznaceno)].style.backgroundColor = ((oznaceno + oznaceno / 10) & 1 ? cernePozadi : bilePozadi);
   }
   var noveOznaceno = a8 + i - 10 * j;
 
@@ -160,7 +165,7 @@ function clicknul(i, j)
     {
       // ale znova ťuknul na svůj kámen - nehrajeme si na "šáhnuto táhnuto"
       zobrazPole(oznaceno);
-      x[noveOznaceno].style.backgroundColor='#000';
+      x[sch2board(noveOznaceno)].style.backgroundColor='#000';
       oznaceno = noveOznaceno;
     }
     else
