@@ -137,7 +137,7 @@ function fgr(i)
 
 function sch2board(i)
 {
-  var y = Math.floor(7 - (i - a1) / 10);
+  var y = 7 - Math.floor((i - a1) / 10);
   var x = (i - a1) % 10;
   return x + y * 8;
 }
