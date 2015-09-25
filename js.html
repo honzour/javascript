@@ -124,7 +124,8 @@ function nalezTahy()
           for (j = 0; j < offsetyKun.length; j++)
             if (sch[i + offsetyKun[j]] <= 0)
             {
-              tahy[i] = i + ((i + offsetyKun[j]) << 8);
+              tahy[tahy.length] = i + ((i + offsetyKun[j]) << 8);
+             
             }
           break;
       }
