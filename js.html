@@ -102,6 +102,37 @@ var sch = new Array(
 100, 100, 100, 100, 100, 100, 100, 100, 100, 100,
 100, 100, 100, 100, 100, 100, 100, 100, 100, 100);
 
+var tahy = new Array();
+
+var offsetyKun = new Array(19, 21);
+
+function nalezTahy()
+{
+  tahy.length = 0;
+  if (bily)
+  {
+    var i, j;
+    for (i = a1; i < h8; i++)
+    {
+      switch (sch[i])
+      {
+        case 0:
+          break;
+        case 100:
+          break;
+        case 2:
+          for (j = 0; j < offsetyKun.length; j++)
+            if (sch[i + offsetyKun[j]] <= 0)
+            {
+              tahy[i] = i + ((i + offsetyKun[j]) << 8);
+            }
+          break;
+      }
+    }
+  }
+}
+
+
 function fgr(i)
 {
   switch (i)
@@ -171,6 +202,20 @@ function clicknul(i, j)
     }
     else
     {
+      var tah = oznaceno + (noveOznaceno << 8);
+      var k;
+
+      for (k = 0; k < tahy.length; k++)
+      {
+        if (tahy[k] == tah)
+          break;
+      }
+ 
+      if (k == tahy.length)
+      {
+        alert("Nepřípustný tah");
+        return;
+      }
       // táhni
       sch[noveOznaceno] = sch[oznaceno];
       sch[oznaceno] = 0;
@@ -191,6 +236,8 @@ function clicknul(i, j)
       oznaceno = noveOznaceno;
     }
   }
+
+  nalezTahy();
 }
 
 
