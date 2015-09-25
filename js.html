@@ -104,7 +104,7 @@ var sch = new Array(
 
 var tahy = new Array();
 
-var offsetyKun = new Array(19, 21);
+var offsetyKun = new Array(-21, -19, -12, -8, 8, 12, 19, 21);
 
 function nalezTahy()
 {
@@ -131,6 +131,29 @@ function nalezTahy()
       }
     }
   }
+  else
+  {
+    var i, j;
+    for (i = a1; i < h8; i++)
+    {
+      switch (sch[i])
+      {
+        case 0:
+          break;
+        case 100:
+          break;
+        case -2:
+          for (j = 0; j < offsetyKun.length; j++)
+            if (sch[i + offsetyKun[j]] >= 0)
+            {
+              tahy[tahy.length] = i + ((i + offsetyKun[j]) << 8);
+             
+            }
+          break;
+      }
+    }
+  }
+
 }
 
 
